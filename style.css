@@ -1,0 +1,932 @@
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:Arial,sans-serif;
+
+}
+
+
+body{
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff9ecf,
+        #ffd6e8,
+        #ffc1df
+    );
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:30px 0;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+
+/* Container */
+
+.container{
+
+    width:90%;
+
+    max-width:500px;
+
+    text-align:center;
+
+    margin:20px auto;
+
+    padding-bottom:70px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/* Heading */
+
+h1{
+
+    color:#e91e63;
+
+    margin-bottom:5px;
+
+}
+
+
+.big-heart{
+
+    font-size:65px;
+
+    margin:5px 0 15px;
+
+    animation:heartbeat 1.3s infinite;
+
+}
+
+
+@keyframes heartbeat{
+
+    0%{
+        transform:scale(1);
+    }
+
+    25%{
+        transform:scale(1.12);
+    }
+
+    40%{
+        transform:scale(1);
+    }
+
+    60%{
+        transform:scale(1.12);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+
+/* Card */
+
+.card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.2);
+
+    margin-top:20px;
+
+}
+
+
+label{
+
+    display:block;
+
+    margin-top:15px;
+
+    text-align:left;
+
+    font-weight:bold;
+
+}
+
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:5px;
+
+    border-radius:10px;
+
+    border:1px solid #ccc;
+
+    font-size:16px;
+
+}
+
+
+textarea{
+
+    resize:none;
+
+    height:100px;
+
+}
+
+
+/* Buttons */
+
+button{
+
+    margin-top:20px;
+
+    padding:14px;
+
+    width:100%;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ff4081;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+button:hover{
+
+    background:#e91e63;
+
+    transform:translateY(-1px);
+
+}
+
+
+/* Music */
+
+.music-button{
+
+    position:fixed;
+
+    top:15px;
+
+    right:15px;
+
+    width:auto;
+
+    margin:0;
+
+    padding:10px 15px;
+
+    font-size:14px;
+
+    z-index:1000;
+
+}
+
+
+/* Hidden */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+
+/* Floating Hearts */
+
+#hearts{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+
+.floating-heart{
+
+    position:absolute;
+
+    bottom:-40px;
+
+    animation:floatHeart linear forwards;
+
+    opacity:.7;
+
+}
+
+
+@keyframes floatHeart{
+
+    0%{
+
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:.7;
+
+    }
+
+    100%{
+
+        transform:
+        translateY(-110vh)
+        rotate(25deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* Score */
+
+#scoreSection{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+    margin-top:20px;
+
+}
+
+
+#scoreSection h2{
+
+    color:#e91e63;
+
+    margin-bottom:15px;
+
+}
+
+
+.score-bar{
+
+    width:100%;
+
+    height:30px;
+
+    background:#ffd6e8;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+
+#scoreFill{
+
+    height:100%;
+
+    width:0%;
+
+    background:#ff4081;
+
+    color:white;
+
+    font-weight:bold;
+
+    line-height:30px;
+
+    text-align:center;
+
+    transition:width 1.5s ease;
+
+}
+
+
+#scoreMessage{
+
+    margin-top:12px;
+
+    color:#e91e63;
+
+    font-weight:bold;
+
+}
+
+
+/* Countdown */
+
+#countdownSection{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+    margin-top:20px;
+
+}
+
+
+#countdownSection h2{
+
+    color:#e91e63;
+
+    margin-bottom:10px;
+
+}
+
+
+#countdownDate{
+
+    color:#777;
+
+    margin-bottom:15px;
+
+}
+
+
+.countdown-box{
+
+    display:flex;
+
+    gap:7px;
+
+}
+
+
+.countdown-box div{
+
+    flex:1;
+
+    background:#fff0f6;
+
+    padding:10px 3px;
+
+    border-radius:12px;
+
+}
+
+
+.countdown-box span{
+
+    display:block;
+
+    color:#e91e63;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+
+.countdown-box small{
+
+    color:#555;
+
+}
+
+
+#countdownMessage{
+
+    color:#e91e63;
+
+    font-weight:bold;
+
+    margin-top:15px;
+
+}
+
+
+/* Envelope */
+
+#envelopeSection{
+
+    margin-top:25px;
+
+}
+
+
+#envelope{
+
+    font-size:90px;
+
+    cursor:pointer;
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    transition:.4s;
+
+}
+
+
+#envelope:hover{
+
+    transform:scale(1.2);
+
+}
+
+
+/* Letter */
+
+.letter{
+
+    background:white;
+
+    padding:22px;
+
+    border-radius:15px;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.2);
+
+    margin-top:20px;
+
+    animation:letterAppear 1s ease;
+
+}
+
+
+@keyframes letterAppear{
+
+    from{
+
+        transform:
+        translateY(100px);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:
+        translateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* Rose */
+
+#roseContainer{
+
+    margin-bottom:20px;
+
+}
+
+
+.rose{
+
+    font-size:90px;
+
+    display:inline-block;
+
+    animation:
+    roseAppear 1.5s ease,
+    roseFloat 3s ease-in-out infinite;
+
+}
+
+
+@keyframes roseAppear{
+
+    from{
+
+        transform:
+        scale(0)
+        rotate(-30deg);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:
+        scale(1)
+        rotate(0);
+
+        opacity:1;
+
+    }
+
+}
+
+
+@keyframes roseFloat{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+
+/* Photo */
+
+#photoContainer{
+
+    margin:15px 0;
+
+}
+
+
+#proposalPhoto{
+
+    width:100%;
+
+    max-height:350px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    box-shadow:
+    0 6px 15px rgba(0,0,0,.2);
+
+}
+
+
+/* Date */
+
+#dateContainer{
+
+    margin:15px 0;
+
+    padding:12px;
+
+    background:#fff0f6;
+
+    border-radius:10px;
+
+}
+
+
+#proposalDate{
+
+    color:#e91e63;
+
+    font-weight:bold;
+
+}
+
+
+/* Personal Message */
+
+#customMessageDisplay{
+
+    background:#fff0f6;
+
+    color:#e91e63;
+
+    padding:12px;
+
+    margin:15px 0;
+
+    border-radius:12px;
+
+    white-space:pre-wrap;
+
+    font-style:italic;
+
+}
+
+
+/* Proposal Text */
+
+#proposalText{
+
+    white-space:pre-wrap;
+
+    text-align:left;
+
+    line-height:1.7;
+
+    font-size:16px;
+
+}
+
+
+/* Final Question */
+
+#proposalQuestion{
+
+    background:white;
+
+    padding:22px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.18);
+
+    margin-top:25px;
+
+    animation:questionAppear 1s ease;
+
+}
+
+
+#proposalQuestion h2{
+
+    color:#e91e63;
+
+    margin-bottom:15px;
+
+}
+
+
+#proposalQuestion > p{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+}
+
+
+#answerMessage{
+
+    color:#e91e63;
+
+    font-weight:bold;
+
+    margin-top:15px;
+
+}
+
+
+@keyframes questionAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+
+/* Feedback */
+
+.feedback{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.15);
+
+    margin-top:20px;
+
+}
+
+
+.feedback h2{
+
+    color:#e91e63;
+
+    margin-bottom:10px;
+
+}
+
+
+#feedbackMessage{
+
+    margin-top:12px;
+
+    color:#e91e63;
+
+    font-weight:bold;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:400px){
+
+    .countdown-box{
+
+        gap:4px;
+
+    }
+
+
+    .countdown-box span{
+
+        font-size:20px;
+
+    }
+
+
+    .countdown-box small{
+
+        font-size:10px;
+
+    }
+
+}
+/* ==========================================
+   UNIQUE FEATURES - VERTICAL LAYOUT
+========================================== */
+
+.unique-section {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto 60px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Every feature goes underneath the previous one */
+.unique-section .story-box,
+.unique-section .star-section,
+.unique-section #puzzleBox {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 25px 0 0 0 !important;
+    float: none !important;
+    clear: both !important;
+    box-sizing: border-box;
+}
+
+/* Puzzle */
+#puzzleBox {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+/* Love story */
+.story-box {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+/* Story result */
+#loveStory {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff0f6;
+    border-radius: 15px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+/* Star section */
+.star-section {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+/* Star sky */
+#starSky {
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+    margin-top: 15px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(
+        180deg,
+        #09052b,
+        #21105c,
+        #4b1d72
+    );
+}
+
+/* Stars */
+#starSky span {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    animation: twinkle 1.5s infinite alternate;
+}
+
+#starSky span:hover {
+    transform: scale(1.4);
+}
+
+/* Star message */
+#starMessage {
+    position: absolute;
+    bottom: 20px;
+    left: 10%;
+    width: 80%;
+    padding: 15px;
+    background: rgba(255,255,255,.9);
+    border-radius: 15px;
+    color: #e91e63;
+    font-weight: bold;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .4;
+        transform: scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
