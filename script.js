@@ -1,8 +1,6 @@
 let proposal = "";
 let i = 0;
-let countdownTimer = null;
 let customMessage = "";
-let specialDate = "";
 
 
 /* ==========================================
@@ -796,55 +794,7 @@ ${yourName}`
     }
 
 
-    /* ==========================================
-       SPECIAL DATE
-    ========================================== */
-
-    if (specialDate !== "") {
-
-        let formatted =
-            new Date(
-                specialDate + "T00:00:00"
-            ).toLocaleDateString(
-                undefined,
-                {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric"
-                }
-            );
-
-
-        document.getElementById("proposalDate").textContent =
-            "💕 Special Date: " + formatted;
-
-
-        document.getElementById("dateContainer")
-            .classList.remove("hidden");
-
-
-        startCountdown(specialDate);
-
-    } else {
-
-        document.getElementById("dateContainer")
-            .classList.add("hidden");
-
-
-        document.getElementById("countdownSection")
-            .classList.add("hidden");
-
-
-        if (countdownTimer) {
-
-            clearInterval(countdownTimer);
-
-        }
-
-    }
-
-
-    /* ==========================================
+    /*  ==========================================
        LOVE SCORE
     ========================================== */
 
